@@ -1,95 +1,156 @@
 import { useState } from 'react';
 import { LeadForm } from '../components/LeadForm';
-import { Check } from 'lucide-react';
+import { Check, Star, Info, Sparkles, ShieldCheck, Clock } from 'lucide-react';
 
 export function Planos() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
   const plans = [
     {
-      name: 'Básico',
-      price: 'R$ 45/hora',
-      description: 'Ideal para companhia e auxílio em tarefas leves.',
-      features: ['Companhia diurna', 'Auxílio em refeições', 'Lembrete de remédios', 'Mínimo de 4h/dia'],
-      color: 'blue'
+      name: 'Essencial',
+      price: '12',
+      unit: '€ /hora',
+      description: 'Assistência focada em autonomia e suporte em rotinas domésticas leves.',
+      features: ['Acompanhamento Social', 'Gestão de Refeições', 'Controlo de Medicação', 'Mínimo de 4h/sessão'],
+      highlight: false
     },
     {
-      name: 'Premium',
-      price: 'R$ 60/hora',
-      description: 'Cuidado completo para idosos com limitações.',
-      features: ['Tudo do Básico', 'Auxílio no banho', 'Troca de fraldas', 'Acompanhamento médico'],
-      highlight: true,
-      color: 'blue'
+      name: 'Executivo',
+      price: '16',
+      unit: '€ /hora',
+      description: 'Cuidado técnico especializado para idosos com necessidades de auxílio físico.',
+      features: ['Higiene e Conforto', 'Auxílio na Mobilidade', 'Acompanhamento Médico', 'Relatórios por Turno'],
+      highlight: true
     },
     {
-      name: '24 Horas',
-      price: 'Sob Consulta',
-      description: 'Segurança total com cuidadores em sistema de escala.',
-      features: ['Monitoramento 24h', 'Relatórios diários', 'Suporte emergencial', 'Escala de cuidadores'],
-      color: 'blue'
+      name: 'Privativo 24h',
+      price: 'Sob',
+      unit: 'Consulta',
+      description: 'Apoio domiciliário permanente com equipa dedicada em regime de rotatividade.',
+      features: ['Vigilância Contínua', 'Enfermagem sob Demanda', 'Gestão de Crises', 'Equipa Multidisciplinar'],
+      highlight: false
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Nossos Planos de Cuidado</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Escolha a modalidade que melhor se adapta às necessidades da sua família.
+    <div className="min-h-screen bg-[#FDFDFD] pb-32">
+      {/* HEADER EDITORIAL */}
+      <section className="relative pt-32 pb-24 px-4 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-50/40 via-transparent to-transparent -z-10"></div>
+        
+        <div className="container mx-auto text-center relative">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white rounded-full shadow-sm border border-gray-100 mb-8">
+            <Sparkles size={14} className="text-blue-500" />
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Investimento em Bem-Estar</span>
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-none">
+            Níveis de <br/> <span className="italic font-serif font-light text-blue-600">Assistência.</span>
+          </h1>
+          <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-light">
+            Transparência total e flexibilidade absoluta para desenhar o plano que melhor se adapta à dinâmica da sua família.
           </p>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+      <div className="container mx-auto px-4">
+        {/* GRID DE PLANOS */}
+        <div className="grid lg:grid-cols-3 gap-10 max-w-7xl mx-auto mb-32">
           {plans.map((plan) => (
             <div 
               key={plan.name} 
-              className={`bg-white rounded-2xl shadow-lg overflow-hidden border-2 transition-all hover:scale-105 ${plan.highlight ? 'border-blue-600' : 'border-transparent'}`}
+              className={`group relative bg-white rounded-[3.5rem] transition-all duration-700 ${
+                plan.highlight 
+                ? 'shadow-[0_40px_80px_rgba(37,99,235,0.15)] border-2 border-blue-600 scale-105 z-10' 
+                : 'shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 hover:scale-[1.02]'
+              }`}
             >
               {plan.highlight && (
-                <div className="bg-blue-600 text-white text-center py-2 text-sm font-bold uppercase">
-                  Mais Escolhido
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-8 py-2 rounded-full text-[10px] font-black tracking-[0.2em] flex items-center gap-2 shadow-xl">
+                  RECOMENDADO
                 </div>
               )}
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-gray-500 mb-6 h-12">{plan.description}</p>
-                <div className="mb-8">
-                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+
+              <div className="p-12">
+                <div className="mb-10">
+                  <h3 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">{plan.name}</h3>
+                  <p className="text-slate-500 text-sm font-light leading-relaxed h-12">
+                    {plan.description}
+                  </p>
                 </div>
-                <ul className="space-y-4 mb-8">
+                
+                <div className="mb-12 flex items-baseline gap-1">
+                  <span className="text-6xl font-black text-slate-900 tracking-tighter">{plan.price}</span>
+                  <span className="text-slate-400 font-bold text-xl">{plan.unit}</span>
+                </div>
+
+                <div className="space-y-6 mb-12">
+                  <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em]">Inclusões Premium:</p>
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-gray-600">
-                      <Check className="text-green-500 w-5 h-5 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
+                    <div key={feature} className="flex items-center gap-4">
+                      <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                        <Check className="text-blue-600 w-3 h-3" strokeWidth={4} />
+                      </div>
+                      <span className="text-slate-600 text-sm font-medium tracking-tight">{feature}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
+
                 <button 
                   onClick={() => {
                     setSelectedPlan(plan.name);
-                    window.scrollTo({ top: document.getElementById('contato-planos')?.offsetTop, behavior: 'smooth' });
+                    const element = document.getElementById('contato-planos');
+                    element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                   }}
-                  className={`w-full py-3 rounded-lg font-bold transition-colors ${plan.highlight ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-100 text-gray-800 hover:bg-gray-200'}`}
+                  className={`w-full py-6 rounded-[2rem] font-black text-xs uppercase tracking-widest transition-all active:scale-95 shadow-xl ${
+                    plan.highlight 
+                    ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-200' 
+                    : 'bg-slate-950 text-white hover:bg-slate-800'
+                  }`}
                 >
-                  Selecionar {plan.name}
+                  Selecionar Nível {plan.name}
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Seção de Contato condicional */}
-        <div id="contato-planos" className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
-          <div className="bg-blue-600 p-10 text-white md:w-1/3 flex flex-col justify-center">
-            <h3 className="text-2xl font-bold mb-4">
-              {selectedPlan ? `Interesse no Plano ${selectedPlan}` : 'Fale com um Especialista'}
-            </h3>
-            <p className="text-blue-100">
-              Preencha os dados e um de nossos coordenadores ligará para você em menos de 2 horas.
-            </p>
+        {/* CONTATO ESTILO CONCIERGE */}
+        <div 
+          id="contato-planos" 
+          className="max-w-6xl mx-auto bg-white rounded-[4rem] shadow-[0_50px_100px_rgba(0,0,0,0.08)] overflow-hidden border border-gray-100 flex flex-col lg:flex-row"
+        >
+          <div className="bg-[#050A18] p-16 text-white lg:w-2/5 flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10">
+              <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-10 shadow-lg shadow-blue-500/20">
+                <Info className="text-white" />
+              </div>
+              <h3 className="text-4xl font-black mb-6 leading-tight tracking-tighter">
+                {selectedPlan ? `Nível ${selectedPlan} selecionado.` : 'Personalize o seu plano.'}
+              </h3>
+              <p className="text-slate-400 text-lg font-light leading-relaxed">
+                Cada família possui uma dinâmica única. Fale com um dos nossos coordenadores de cuidado para ajustar os detalhes.
+              </p>
+            </div>
+            
+            <div className="mt-16 pt-10 border-t border-white/10 relative z-10">
+              <div className="flex items-center gap-4 mb-4">
+                <ShieldCheck className="text-blue-500" size={20} />
+                <span className="text-xs font-bold tracking-widest uppercase text-slate-300">Privacidade Garantida</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <Clock className="text-blue-500" size={20} />
+                <span className="text-xs font-bold tracking-widest uppercase text-slate-300">Resposta em 15min</span>
+              </div>
+            </div>
           </div>
-          <div className="p-10 md:w-2/3">
+          
+          <div className="p-16 lg:w-3/5 bg-white">
+            <div className="mb-10">
+                <h4 className="text-2xl font-black text-slate-900 tracking-tight mb-2">Finalizar Pedido de Orçamento</h4>
+                <p className="text-slate-500 font-light italic">Sem compromisso, com total discrição.</p>
+            </div>
             <LeadForm />
           </div>
         </div>
