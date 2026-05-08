@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LeadForm } from '../components/LeadForm';
-import { Check, Star, Info, Sparkles, ShieldCheck, Clock } from 'lucide-react';
+import { Check,  Info, Sparkles, ShieldCheck, Clock } from 'lucide-react';
 
 export function Planos() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);

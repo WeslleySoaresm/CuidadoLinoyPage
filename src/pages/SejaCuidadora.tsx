@@ -1,4 +1,4 @@
-import { Shield, Award, Users, CheckCircle2, Heart, ArrowRight, Sparkles, Star } from 'lucide-react';
+import { Shield, Award, Users, CheckCircle2, ArrowRight, Sparkles, Star } from 'lucide-react';
 
 export function SejaCuidadora() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
