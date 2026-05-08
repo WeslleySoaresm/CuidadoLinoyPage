@@ -39,7 +39,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3">
                 <Icon name="Phone" size={16} className="text-blue-500" />
-                (11) 99999-9999
+                +351 966280773
               </li>
               <li className="flex items-center gap-3">
                 <Icon name="Mail" size={16} className="text-blue-500" />
@@ -47,7 +47,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Icon name="MapPin" size={16} className="text-blue-500" />
-                São Paulo, SP
+                Cascais - Lisboa
               </li>
             </ul>
           </div>

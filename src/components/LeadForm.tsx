@@ -5,38 +5,42 @@ export function LeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // Adicionamos o estado para controlar os inputs
+  const [formData, setFormData] = useState({
+    nome: '',
+    telefone: '',
+    cidade: '',
+    necessidade: 'companhia',
+    urgencia: 'planejamento'
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus('idle');
-
-    // Pegamos os dados direto do formulário
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      nome: formData.get('nome'),
-      telefone: formData.get('telefone'),
-      cidade: formData.get('cidade'),
-      necessidade: formData.get('necessidade'),
-      urgencia: formData.get('urgencia'),
-    };
 
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          from_name: data.nome,
+          from_name: formData.nome,
           message: `
-            Telefone: ${data.telefone}
-            Cidade: ${data.cidade}
-            Necessidade: ${data.necessidade}
-            Urgência: ${data.urgencia}
+            Telefone: ${formData.telefone}
+            Cidade: ${formData.cidade}
+            Necessidade: ${formData.necessidade}
+            Urgência: ${formData.urgencia}
           `,
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       setStatus('success');
-      (e.target as HTMLFormElement).reset(); // Limpa o formulário
+      setFormData({ nome: '', telefone: '', cidade: '', necessidade: 'companhia', urgencia: 'planejamento' });
     } catch (error) {
       console.error('Erro ao enviar:', error);
       setStatus('error');
@@ -50,26 +54,52 @@ export function LeadForm() {
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
           <label className="block text-gray-700 font-medium mb-1">Nome Completo</label>
-          <input name="nome" type="text" required placeholder="Ex: Maria Silva"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+          <input 
+            name="nome" 
+            type="text" 
+            required 
+            value={formData.nome} // Adicionado
+            onChange={handleChange} // Adicionado
+            placeholder="Ex: Maria Silva"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-800" 
+          />
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <label className="block text-gray-700 font-medium mb-1">WhatsApp/Telefone</label>
-            <input name="telefone" type="tel" required placeholder="(11) 99999-9999"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+            <input 
+              name="telefone" 
+              type="tel" 
+              required 
+              value={formData.telefone}
+              onChange={handleChange}
+              placeholder="(11) 99999-9999"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-800" 
+            />
           </div>
           <div>
             <label className="block text-gray-700 font-medium mb-1">Cidade</label>
-            <input name="cidade" type="text" required placeholder="Sua cidade"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+            <input 
+              name="cidade" 
+              type="text" 
+              required 
+              value={formData.cidade}
+              onChange={handleChange}
+              placeholder="Sua cidade"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-800" 
+            />
           </div>
         </div>
 
         <div>
           <label className="block text-gray-700 font-medium mb-1">O que você precisa?</label>
-          <select name="necessidade" className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none">
+          <select 
+            name="necessidade" 
+            value={formData.necessidade}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none text-gray-800"
+          >
             <option value="companhia">Apenas companhia</option>
             <option value="cuidados_basicos">Cuidados básicos e remédios</option>
             <option value="pos_operatorio">Pós-operatório</option>
@@ -79,7 +109,12 @@ export function LeadForm() {
 
         <div>
           <label className="block text-gray-700 font-medium mb-1">Urgência</label>
-          <select name="urgencia" className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none">
+          <select 
+            name="urgencia" 
+            value={formData.urgencia}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-none text-gray-800"
+          >
             <option value="imediata">Para hoje / Emergência</option>
             <option value="esta_semana">Para esta semana</option>
             <option value="planejamento">Apenas pesquisando preços</option>
