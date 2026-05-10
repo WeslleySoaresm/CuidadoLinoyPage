@@ -5,7 +5,7 @@ export function Home() {
   return (
     <div className="min-h-screen bg-[#FDFDFD]">
       {/* 1. HERO - LUXO MINIMALISTA (ESTILO CONCIERGE) */}
-      <section className="relative pt-40 pb-32 px-4 overflow-hidden bg-[#050A18]">
+      <section className="relative pt-12 pb-32 px-4 overflow-hidden bg-[#050A18]">
         {/* Gradientes de Profundidade */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none"></div>
         <div className="absolute -bottom-40 -left-20 w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none"></div>
@@ -82,7 +82,7 @@ export function Home() {
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-7 relative rounded-[4rem] overflow-hidden h-[700px] shadow-2xl">
             <img 
-              src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80" 
+              src="/public/img/cuidadoshome.jpg" 
               className="absolute inset-0 w-full h-full object-cover"
               alt="Care" 
             />
