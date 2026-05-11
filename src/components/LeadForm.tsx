@@ -74,7 +74,7 @@ export function LeadForm() {
               required 
               value={formData.telefone}
               onChange={handleChange}
-              placeholder="(11) 99999-9999"
+              placeholder="+351 999 999 999"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-800" 
             />
           </div>
@@ -103,6 +103,7 @@ export function LeadForm() {
             <option value="companhia">Apenas companhia</option>
             <option value="cuidados_basicos">Cuidados básicos e remédios</option>
             <option value="pos_operatorio">Pós-operatório</option>
+            <option value="24h">Atendimento 12h</option>
             <option value="24h">Atendimento 24h</option>
           </select>
         </div>

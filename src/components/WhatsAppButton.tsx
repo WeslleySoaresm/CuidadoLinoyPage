@@ -1,5 +1,5 @@
 export function WhatsAppButton() {
-  const phone = "5511999999999"; // TROQUE PELO SEU NÚMERO
+  const phone = "+351 926 893 603 "; // TROQUE PELO SEU NÚMERO
   const message = "Olá! Gostaria de um orçamento para cuidadora de idosos.";
 
   return (

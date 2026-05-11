@@ -8,7 +8,7 @@ export function Planos() {
   const plans = [
     {
       name: 'Essencial',
-      price: '12',
+      price: '25',
       unit: '€ /hora',
       description: 'Assistência focada em autonomia e suporte em rotinas domésticas leves.',
       features: ['Acompanhamento Social', 'Gestão de Refeições', 'Controlo de Medicação', 'Mínimo de 4h/sessão'],
@@ -16,8 +16,8 @@ export function Planos() {
     },
     {
       name: 'Executivo',
-      price: '16',
-      unit: '€ /hora',
+      price: '30',
+      unit: '€ Apartir',
       description: 'Cuidado técnico especializado para idosos com necessidades de auxílio físico.',
       features: ['Higiene e Conforto', 'Auxílio na Mobilidade', 'Acompanhamento Médico', 'Relatórios por Turno'],
       highlight: true

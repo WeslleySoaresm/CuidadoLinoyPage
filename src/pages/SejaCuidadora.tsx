@@ -1,16 +1,27 @@
-import { Shield, Award, Users, CheckCircle2, ArrowRight, Sparkles, Star } from 'lucide-react';
-
+import { Shield, Award, Users, CheckCircle2, ArrowRight, Sparkles, Star, MessageCircle } from 'lucide-react';
 export function SejaCuidadora() {
+  const formsLink = import.meta.env.VITE_FORMS_LINK;
+  const grupoWhatsApp = import.meta.env.VITE_GRUPO_WHATSAPP;
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    window.open('https://forms.gle/SEU_ID_DO_GOOGLE_FORMS', '_blank');
+    if(formsLink) {
+      window.open( formsLink, '_blank');
+    }
+    
+  };
+  
+
+  const handleWhatsAppGroup = () => {
+   if(grupoWhatsApp){
+    window.open( grupoWhatsApp, '_blank');
+   }
+    
   };
 
   return (
     <div className="min-h-screen bg-[#FDFDFD]">
-      {/* 1. HERO - PRESTÍGIO E CARREIRA */}
+      {/* 1. HERO */}
       <section className="relative pt-40 pb-32 px-4 overflow-hidden bg-[#050A18]">
-        {/* Elementos Visuais de Fundo */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
         
         <div className="container mx-auto text-center relative z-10">
@@ -33,13 +44,40 @@ export function SejaCuidadora() {
       <div className="container mx-auto px-4 py-32">
         <div className="grid lg:grid-cols-2 gap-24 items-start">
           
-          {/* Lado Esquerdo: Proposta de Valor Premium */}
+          {/* Lado Esquerdo: Proposta de Valor + NOVO BOTÃO WHATSAPP */}
           <div className="space-y-16">
-            <div>
-              <h2 className="text-5xl font-black text-slate-900 mb-8 tracking-tighter">O Padrão Cuidar+ para profissionais.</h2>
-              <p className="text-slate-500 text-lg font-light leading-relaxed max-w-lg">
-                Valorizamos a sua vocação com uma estrutura de suporte que garante a sua dignidade e crescimento profissional.
-              </p>
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-5xl font-black text-slate-900 mb-8 tracking-tighter">O Padrão Cuidar+ para profissionais.</h2>
+                <p className="text-slate-500 text-lg font-light leading-relaxed max-w-lg">
+                  Valorizamos a sua vocação com uma estrutura de suporte que garante a sua dignidade e crescimento profissional.
+                </p>
+              </div>
+
+              {/* BOTÃO DIFERENCIADO DE WHATSAPP (Comunidade de Elite) */}
+              <div 
+                onClick={handleWhatsAppGroup}
+                className="relative group cursor-pointer max-w-md"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2.5rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                <div className="relative flex items-center gap-6 p-8 bg-white border border-blue-50 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-500">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-green-500 rounded-2xl blur-lg opacity-20 animate-pulse"></div>
+                    <div className="relative w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center shadow-inner">
+                      <MessageCircle size={30} strokeWidth={1.5} />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-green-600">Comunidade VIP</span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                    </div>
+                    <h4 className="text-lg font-bold text-slate-900 leading-tight">Círculo de Talentos Cuidar+</h4>
+                    <p className="text-xs text-slate-500 mt-1">Receba novas vagas e formações exclusivas em primeira mão.</p>
+                  </div>
+                  <ArrowRight size={20} className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                </div>
+              </div>
             </div>
             
             <div className="grid gap-10">
@@ -79,7 +117,7 @@ export function SejaCuidadora() {
             </div>
           </div>
 
-          {/* Lado Direito: Formulário de Pré-Seleção */}
+          {/* Lado Direito: Formulário */}
           <div className="relative lg:sticky lg:top-32">
             <div className="absolute -inset-10 bg-blue-50/50 rounded-[4rem] -z-10 blur-2xl"></div>
             <div className="bg-white p-12 rounded-[3.5rem] shadow-[0_50px_100px_rgba(0,0,0,0.06)] border border-gray-100">
