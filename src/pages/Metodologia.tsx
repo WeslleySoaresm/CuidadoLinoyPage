@@ -93,7 +93,7 @@ export function Metodologia() {
               { 
                 step: "04", 
                 title: "Supervisão de Auditoria", 
-                content: "Controle de qualidade ininterrupto com visitas de enfermagem para assegurar o padrão Cuidar+.",
+                content: "Controle de qualidade ininterrupto com visitas de enfermagem para assegurar o padrão Cuidoo+.",
                 icon: ShieldCheck 
               }
             ].map((item, i) => (

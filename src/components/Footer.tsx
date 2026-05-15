@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const emailCuidooMais = "contactocuidoomais@gmail.com"
 
   return (
     <footer className="bg-[#050A18] text-slate-400 pt-20 pb-10 mt-auto border-t border-white/5">
@@ -24,12 +25,12 @@ export function Footer() {
               Líder em atendimento domiciliar humanizado em Portugal. Proporcionamos dignidade e o padrão ouro de saúde no conforto do lar.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="p-3 bg-slate-900/50 rounded-xl hover:bg-[#1E4FD9] hover:text-white transition-all duration-300 group">
+              {/*<a href="#" className="p-3 bg-slate-900/50 rounded-xl hover:bg-[#1E4FD9] hover:text-white transition-all duration-300 group">
                 <FaInstagram size={18} className="group-hover:scale-110 transition-transform" />
               </a>
               <a href="#" className="p-3 bg-slate-900/50 rounded-xl hover:bg-[#1E4FD9] hover:text-white transition-all duration-300 group">
                 <FaLinkedin size={18} className="group-hover:scale-110 transition-transform" />
-              </a>
+              </a>*/}
             </div>
           </div>
 
@@ -74,7 +75,7 @@ export function Footer() {
                 <div className="p-2.5 bg-slate-900/50 rounded-lg group-hover:bg-[#1E4FD9]/10 transition-colors">
                   <Mail size={16} className="text-[#1E4FD9]" />
                 </div>
-                <span className="group-hover:text-white transition-colors">contato@cuidar.pt</span>
+                <span className="group-hover:text-white transition-colors">contactocuidoomais@gmail.com</span>
               </li>
               <li className="flex items-center gap-4 group">
                 <div className="p-2.5 bg-slate-900/50 rounded-lg">
@@ -112,7 +113,7 @@ export function Footer() {
 
         {/* Créditos Finais */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">
-          <p>© {currentYear} Cuidar+ Unipessoal Lda. Todos os direitos reservados.</p>
+          <p>© {currentYear} Cuidoo + Unipessoal Lda. Todos os direitos reservados.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacidade</a>
             <a href="#" className="hover:text-white transition-colors">Cookies</a>

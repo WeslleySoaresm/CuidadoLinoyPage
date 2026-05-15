@@ -48,7 +48,7 @@ export function SejaCuidadora() {
           <div className="space-y-16">
             <div className="space-y-8">
               <div>
-                <h2 className="text-5xl font-black text-slate-900 mb-8 tracking-tighter">O Padrão Cuidar+ para profissionais.</h2>
+                <h2 className="text-5xl font-black text-slate-900 mb-8 tracking-tighter">O Padrão Cuidoo+ para profissionais.</h2>
                 <p className="text-slate-500 text-lg font-light leading-relaxed max-w-lg">
                   Valorizamos a sua vocação com uma estrutura de suporte que garante a sua dignidade e crescimento profissional.
                 </p>
@@ -72,7 +72,7 @@ export function SejaCuidadora() {
                       <span className="text-[10px] font-black uppercase tracking-widest text-green-600">Comunidade VIP</span>
                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
                     </div>
-                    <h4 className="text-lg font-bold text-slate-900 leading-tight">Círculo de Talentos Cuidar+</h4>
+                    <h4 className="text-lg font-bold text-slate-900 leading-tight">Círculo de Talentos Cuidoo+</h4>
                     <p className="text-xs text-slate-500 mt-1">Receba novas vagas e formações exclusivas em primeira mão.</p>
                   </div>
                   <ArrowRight size={20} className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
