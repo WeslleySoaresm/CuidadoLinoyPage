@@ -4,12 +4,12 @@ import {
   MapPin, 
   Clock 
 } from 'lucide-react';
-import { FaInstagram, FaLinkedin } from 'react-icons/fa';
+{/*import { FaInstagram, FaLinkedin } from 'react-icons/fa';*/}
 import { Link } from 'react-router-dom';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const emailCuidooMais = "contactocuidoomais@gmail.com"
+  
 
   return (
     <footer className="bg-[#050A18] text-slate-400 pt-20 pb-10 mt-auto border-t border-white/5">
@@ -124,3 +124,4 @@ export function Footer() {
     </footer>
   );
 }
+
